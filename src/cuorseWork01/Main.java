@@ -3,10 +3,12 @@ package cuorseWork01;
 import java.util.Arrays;
 
 public class Main {
+    private static Employee[] employees = new Employee[10];
+
     private static double sumSalary(Employee[] employees) {
         double sumSalary = employees[0].getSalary();
-        for (int i = 0; i < employees.length; ++i) {
-            sumSalary += employees[i].getSalary();
+        for (Employee employee : employees) {
+            sumSalary += employee.getSalary();
         }
         return sumSalary;
     }
@@ -14,12 +16,10 @@ public class Main {
     private static void findMinSalary(Employee[] employees) {
         double employeeWithMinSalary = employees[0].getSalary();
         String personWithMinSalary = null;
-
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getSalary() < employeeWithMinSalary) employeeWithMinSalary
-                    = employees[i].getSalary();
-            if (employeeWithMinSalary == employees[i].getSalary()) {
-                personWithMinSalary = employees[i].getFio();
+        for (Employee employee : employees) {
+            if (employee.getSalary() <= employeeWithMinSalary) {
+                employeeWithMinSalary = employee.getSalary();
+                personWithMinSalary = employee.getFio();
             }
         }
         System.out.println("У " + personWithMinSalary + "самая маленькая зарплата: " + employeeWithMinSalary +
@@ -29,10 +29,10 @@ public class Main {
     private static void findMaxSalary(Employee[] employees) {
         double employeWithMaxSalary = employees[0].getSalary();
         String personWithMaxSalary = null;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getSalary() > employeWithMaxSalary) employeWithMaxSalary = employees[i].getSalary();
-            if (employeWithMaxSalary == employees[i].getSalary()) {
-                personWithMaxSalary = employees[i].getFio();
+        for (Employee employee : employees) {
+            if (employee.getSalary() >= employeWithMaxSalary) {
+                employeWithMaxSalary = employee.getSalary();
+                personWithMaxSalary = employee.getFio();
             }
         }
         System.out.println("У " + personWithMaxSalary + "самая большая зарплата: " + employeWithMaxSalary
@@ -40,21 +40,18 @@ public class Main {
     }
 
     private static double findAverageSalary(Employee[] employees) {
-        double findAverageSalary;
-        findAverageSalary = sumSalary(employees) / employees.length;
-        return findAverageSalary;
+        return sumSalary(employees) / employees.length;
     }
 
     private static void fioEmployee(Employee[] employees) {
         for (int i = 0; i < employees.length; i++) {
 
-            System.out.println(employees[i].getFio());
+            System.out.println(employees[i].getId() + ". " + employees[i].getFio());
         }
     }
 
     public static void main(String[] args) {
-
-        Employee[] employees = new Employee[10];
+//        Employee[] employees = new Employee[10];
         Employee ivanovIvanIvanovich = new Employee("Иванов Иван Иванович ", 1, 70000);
         Employee sidorovSidorSidorovich = new Employee("Сидоров Сидор Сидорович ", 1, 75000);
         Employee markovAndreyIvanovich = new Employee("Марков Андрей Иванович ", 2, 83000);
