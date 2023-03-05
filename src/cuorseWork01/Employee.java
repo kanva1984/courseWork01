@@ -2,7 +2,6 @@ package cuorseWork01;
 
 public class Employee {
     public static int counter;
-
     private final int id;
     private final String fio;
     private int department;
