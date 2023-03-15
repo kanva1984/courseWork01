@@ -3,10 +3,11 @@ package cuorseWork01;
 public class Employee {
     public static int counter;
     private final int id;
-    private final String fio;
+
+    private String fio;
+
     private int department;
     private double salary;
-
     public Employee(String fio, int department, double salary) {
         this.fio = fio;
         this.department = department;
@@ -17,6 +18,10 @@ public class Employee {
     public String getFio() {
 
         return fio;
+    }
+
+    public void setFio(String fio) {
+        this.fio = fio;
     }
 
     public int getDepartment() {
