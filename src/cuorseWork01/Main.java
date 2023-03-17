@@ -58,12 +58,12 @@ public class Main {
     }
 
     private static void findEmployeeWithMinSalaryOfOneDepartment(byte numberOfDepartment) {
-        Employee minSalaryOf = new Employee(null, 0, 0.0);
+        Employee minSalaryOf = null;
         for (int i = 0; i < employees.length; i++) {
             if (Main.employees[i].getDepartment() == numberOfDepartment) {
-                if (minSalaryOf.getSalary() == 0.0 || employees[i].getSalary() <= minSalaryOf.getSalary()) {
-                    minSalaryOf.setSalary(employees[i].getSalary());
-                    minSalaryOf.setFio(employees[i].getFio());
+                if (minSalaryOf == null || employees[i].getSalary() <= minSalaryOf.getSalary()) {
+                    minSalaryOf = employees[i];
+
                 }
             }
         }
@@ -72,12 +72,11 @@ public class Main {
     }
 
     private static void findEmployeeWithMaxSalaryOfOneDepartment(byte numberOfDepartment) {
-        Employee maxSalaryOf = new Employee(null, 0, 0.0);
-        for (int i = 0; i < employees.length; i++) {
-            if (Main.employees[i].getDepartment() == numberOfDepartment) {
-                if (maxSalaryOf.getSalary() == 0.0 || employees[i].getSalary() >= maxSalaryOf.getSalary()) {
-                    maxSalaryOf.setSalary(employees[i].getSalary());
-                    maxSalaryOf.setFio(employees[i].getFio());
+        Employee maxSalaryOf = null;
+        for (Employee employee : employees) {
+            if (employee.getDepartment() == numberOfDepartment) {
+                if (maxSalaryOf == null || employee.getSalary() >= maxSalaryOf.getSalary()) {
+                    maxSalaryOf = employee;
                 }
             }
         }
@@ -88,9 +87,9 @@ public class Main {
     private static double findSumSalaryOfOneDepartment(byte numberOfDepartment) {
         double sumSalaryOfOneDepartment = 0.0;
 
-        for (int i = 0; i < employees.length; i++) {
-            if (Main.employees[i].getDepartment() == numberOfDepartment) {
-                sumSalaryOfOneDepartment += employees[i].getSalary();
+        for (Employee employee : employees) {
+            if (employee.getDepartment() == numberOfDepartment) {
+                sumSalaryOfOneDepartment += employee.getSalary();
             }
         }
         return sumSalaryOfOneDepartment;
