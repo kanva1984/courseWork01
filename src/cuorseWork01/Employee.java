@@ -17,23 +17,18 @@ public class Employee {
     }
 
     public String getFio() {
-
         return fio;
     }
 
-
     public int getDepartment() {
-
         return department;
     }
 
     public void setDepartment(byte department) {
-
         this.department = department;
     }
 
     public double getSalary() {
-
         return salary;
     }
 
@@ -50,6 +45,5 @@ public class Employee {
 
     public int getId() {
         return id;
-
     }
 }
